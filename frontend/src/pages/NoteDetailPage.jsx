@@ -1,12 +1,12 @@
 import React from 'react'
-import { useState } from "react";
-import toast from 'react-hot-toast';
+import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
-import { useEffect } from "react";
-import api from "../lib/axios";
-import { LoaderIcon } from 'lucide-react';
 import { Link } from 'react-router';
+import { LoaderIcon } from 'lucide-react';
 import { ArrowLeftIcon, Trash2Icon } from 'lucide-react';
+
+import toast from 'react-hot-toast';
+import api from "../lib/axios";
 
 const NoteDetailPage = () => {
   const [note, setNote ] = useState(null);
@@ -50,11 +50,13 @@ const NoteDetailPage = () => {
     }
   }
 
-  const handleSave = async () => {
-    if (!note.title.trim() || !note.content.trim()) {
-      toast.error("Title and content cannot be empty");
-    }
+  const handleSave = async () => {    
     setSaving(true);
+    if (!note.title.trim() || !note.content.trim()) {
+        toast.error("Title and content cannot be empty");
+        return
+      }
+      
     try {
       await api.put(`/notes/${id}`, note);
       toast.success("Note updated successfully");
@@ -66,10 +68,10 @@ const NoteDetailPage = () => {
             icon: "💀"
         })        
       }
-        
-
-      console.log("Error updating note:", error);
-      toast.error("Failed to update the note");      
+      else {
+        console.log("Error updating note:", error);
+        toast.error("Failed to update the note");
+      }
     } finally {
       setSaving(false);
     }

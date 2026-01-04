@@ -52,7 +52,7 @@ const CreatePage = () => {
             icon: "💀"
         })
       }
-      
+      return
     } finally {
       setLoading(false);
     }
