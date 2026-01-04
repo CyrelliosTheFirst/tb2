@@ -51,12 +51,12 @@ const NoteDetailPage = () => {
   }
 
   const handleSave = async () => {    
-    setSaving(true);
     if (!note.title.trim() || !note.content.trim()) {
-        toast.error("Title and content cannot be empty");
-        return
-      }
-      
+      toast.error("Title and content cannot be empty");
+      return
+    }
+        
+    setSaving(true);
     try {
       await api.put(`/notes/${id}`, note);
       toast.success("Note updated successfully");
