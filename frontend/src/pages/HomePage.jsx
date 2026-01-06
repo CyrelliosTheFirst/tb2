@@ -35,8 +35,8 @@ const HomePage = () => {
     fetchNotes();
   },[])
 
-  return (
-    <div className="min-h-screen">
+  return (    
+    <div className="min-h-screen">      
       <Navbar />
 
       {isRateLimited && <RateLimitedUI />}

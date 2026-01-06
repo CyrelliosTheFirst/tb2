@@ -51,22 +51,24 @@ const NoteDetailPage = () => {
   }
 
   const handleSave = async () => {    
-    if (!note.title.trim() || !note.content.trim()) {
+    /* if (!note.title.trim() || !note.content.trim()) {
       toast.error("Title and content cannot be empty");
       return
-    }
+    } */
         
     setSaving(true);
     try {
       await api.put(`/notes/${id}`, note);
       toast.success("Note updated successfully");
-      navigate("/");
+      navigate(`/note/${id}`, note);
     } catch (error) {
-      if (error.response?.status === 429) {
-        toast.error("Slow down!! You're updating notes too fast", {
-            duration:4000,
-            icon: "💀"
-        })        
+      if (error.response){
+        if (error.response && error.response?.status === 429) {
+          toast.error("Slow down!! You're updating notes too fast", {
+              duration:4000,
+              icon: "💀"
+          })
+        }
       }
       else {
         console.log("Error updating note:", error);
@@ -92,11 +94,11 @@ const NoteDetailPage = () => {
           <div className="flex items-center justify-between mb-6">
             <Link to="/" className="btn btn-ghost">
               <ArrowLeftIcon className="h-5 w-5" />
-              Back to Notes          
+              Back to box
             </Link>
             <button onClick={handleDelete} className="btn btn-error btn-outline">
               <Trash2Icon className="h-5 w-5"/>
-              Delete Note
+              Delete Jot
             </button>
           </div>
 
@@ -108,7 +110,7 @@ const NoteDetailPage = () => {
                 </label>
                 <input
                   type="text"
-                  placeholder='Note title'
+                  placeholder='Jot title'
                   className="input input-bordered"
                   value={note.title}
                   onChange={(e) => setNote({...note, title: e.target.value })}
@@ -120,7 +122,7 @@ const NoteDetailPage = () => {
                 </label>
                 <textarea
                   className="textarea textarea-bordered h-32"
-                  placeholder="Write your note here..."
+                  placeholder="Write your jot here..."
                   value={note.content}
                   onChange={(e) => setNote({...note, content: e.target.value })}
                 />
