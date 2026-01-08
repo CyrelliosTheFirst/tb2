@@ -64,7 +64,7 @@ const CreatePage = () => {
       <div className="max-w-2xl mx-auto">
         <Link to={"/"} className="btn btn-ghost mb-6">
           <ArrowLeftIcon className="size-5" />
-          Back to box
+          Back to Box
         </Link>
         
         <div className="card bg-base-100">

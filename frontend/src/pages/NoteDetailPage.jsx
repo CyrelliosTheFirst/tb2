@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { Link } from 'react-router';
-import { LoaderIcon } from 'lucide-react';
+import { LoaderIcon, PenSquareIcon } from 'lucide-react';
 import { ArrowLeftIcon, Trash2Icon } from 'lucide-react';
 
 import toast from 'react-hot-toast';
@@ -94,7 +94,7 @@ const NoteDetailPage = () => {
           <div className="flex items-center justify-between mb-6">
             <Link to="/" className="btn btn-ghost">
               <ArrowLeftIcon className="h-5 w-5" />
-              Back to box
+              Back to Box
             </Link>
             <button onClick={handleDelete} className="btn btn-error btn-outline">
               <Trash2Icon className="h-5 w-5"/>
@@ -130,10 +130,13 @@ const NoteDetailPage = () => {
 
               <div className="card-actions justify-end">
                 <button className="btn btn-primary" disabled={saving} onClick={handleSave}>
-                  {saving ? 'Saving...' : 'Save Changes'}
-                </button>
-              </div>
-
+                  <PenSquareIcon className="size-4" />
+                  {saving ? 
+                  'Saving...' :                  
+                  'Save Changes'
+                  }
+              </button>
+            </div>
             </div>
           </div>
 
