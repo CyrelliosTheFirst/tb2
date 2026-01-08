@@ -98,7 +98,7 @@ const CreatePage = () => {
 
               <div className="card-actions justify-end">
                 <button type="submit" className="btn btn-primary" disabled={loading}>
-                  <PlusIcon className="size-5 mr-2" />
+                  <PlusIcon className="size-5" />
                   {loading ? "Creating..." : "Create Jot"}
                 </button>
               </div>
