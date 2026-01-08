@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from "react";
-import { ArrowLeftIcon } from "lucide-react"
+import { ArrowLeftIcon, PlusIcon } from "lucide-react"
 import { Link, useNavigate } from "react-router";
 import { toast } from "react-hot-toast";
 import api from "../lib/axios";
@@ -98,6 +98,7 @@ const CreatePage = () => {
 
               <div className="card-actions justify-end">
                 <button type="submit" className="btn btn-primary" disabled={loading}>
+                  <PlusIcon className="size-5 mr-2" />
                   {loading ? "Creating..." : "Create Jot"}
                 </button>
               </div>

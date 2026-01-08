@@ -2,7 +2,7 @@ import React from 'react'
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router";
 import { Link } from 'react-router';
-import { LoaderIcon, PenSquareIcon } from 'lucide-react';
+import { LoaderIcon, PenSquareIcon} from 'lucide-react';
 import { ArrowLeftIcon, Trash2Icon } from 'lucide-react';
 
 import toast from 'react-hot-toast';
